@@ -42,7 +42,7 @@ const newBook=async(req,res)=>{
             author:autor,
             year:anio,
             sinopsis:info,
-            img:picture
+            img:picture.filename
         })
         let resultado=await book.collection.insertOne(nuevoLibro)
         res.status(201).send(resultado)
