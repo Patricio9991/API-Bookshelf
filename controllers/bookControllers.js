@@ -22,8 +22,8 @@ const findById=async(req,res)=>{
 const newBook=async(req,res)=>{
     const {obra,autor,anio,info}=req.body
 
-
-    if(req.file==='undefined'){
+  
+    if(req.body.file==='undefined'){
         let nuevoLibro= new book({     //aca viene del form y los names del req.body 
             title:obra,                //estan vinculados al schema, OJO
             author:autor,
