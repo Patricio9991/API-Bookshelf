@@ -1,9 +1,9 @@
 const mongoose=require('mongoose')
 
 const user='ppuchetadev'
-const pass='NanyPato1.'
+const pass='BEkuUqmfsoa3tRSW'
 
-const url=`mongodb+srv://${user}:${pass}@cluster0.7yzio5l.mongodb.net/?retryWrites=true&w=majority`
+const url=`mongodb+srv://${user}:${pass}@cluster0.ekq3gfw.mongodb.net/?retryWrites=true&w=majority`
 
 const main=async()=>{
    await mongoose.connect(url)
