@@ -22,10 +22,8 @@ const findById=async(req,res)=>{
 const newBook=async(req,res)=>{
     const {obra,autor,anio,info}=req.body
 
-    const picture=req.file
-    console.log(picture)
 
-    if(picture==='undefined'){
+    if(req.file==='undefined'){
         let nuevoLibro= new book({     //aca viene del form y los names del req.body 
             title:obra,                //estan vinculados al schema, OJO
             author:autor,
@@ -42,7 +40,7 @@ const newBook=async(req,res)=>{
             author:autor,
             year:anio,
             sinopsis:info,
-            img:picture.filename
+            img:req.file.filename
         })
         let resultado=await book.collection.insertOne(nuevoLibro)
         res.status(201).send(resultado)
