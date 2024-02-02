@@ -22,19 +22,33 @@ const findById=async(req,res)=>{
 const newBook=async(req,res)=>{
     const {obra,autor,anio,info}=req.body
 
+    const picture=req.file
+    console.log(picture)
+
+    if(picture==='undefined'){
         let nuevoLibro= new book({     //aca viene del form y los names del req.body 
-            title:obra,                //estan vinculados al schema
+            title:obra,                //estan vinculados al schema, OJO
+            author:autor,
+            year:anio,
+            sinopsis:info
+            
+        })
+        let resultado=await book.collection.insertOne(nuevoLibro)
+        res.status(201).send(resultado)
+
+    }else{
+        let nuevoLibro= new book({    
+            title:obra,                
             author:autor,
             year:anio,
             sinopsis:info,
-            img:req.file.filename
+            img:picture
         })
-            console.log(req.file)
-            //console.log(req.body)
-            let resultado=await book.collection.insertOne(nuevoLibro)
-            
-        
-            res.status(201).send(resultado)
+        let resultado=await book.collection.insertOne(nuevoLibro)
+        res.status(201).send(resultado)
+    }
+
+
 }
 
 
